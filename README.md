@@ -1,24 +1,27 @@
-# Video Research Studio
+# 视频研究工作台
 
-Monorepo for a public-facing video research and download MVP.
+这是一个面向公开链接场景的视频解析、下载与内容研究 MVP 单仓项目。
 
-## Structure
+## 目录结构
 
-- `frontend/` - Vue 3 + Element Plus client
-- `backend/` - FastAPI API and worker services
-- `infra/` - deployment examples and local compose file
-- `docs/` - project notes
+- `frontend/`：基于 Vue 3 + Element Plus 的前端站点
+- `backend/`：基于 FastAPI 的后端接口与任务处理服务
+- `infra/`：本地运行与部署示例配置
+- `docs/`：架构说明与项目文档
 
-## Product Scope
+## 当前产品范围
 
-The product focuses on public video analysis workflows:
+当前版本聚焦在公开视频研究流程：
 
-1. Inspect a public video URL
-2. Select a downloadable format
-3. Queue a processing task
-4. Download media, extract audio, transcribe, and summarize
-5. Review history and export outputs
+1. 解析公开视频链接
+2. 选择可下载格式
+3. 根据是否有字幕决定直接下载或创建任务
+4. 下载媒体、提取字幕并生成总结
+5. 在工作台中查看历史记录、结果与导出文件
 
-## Local Development
+## 本地开发
 
-See `backend/README.md` and `frontend/README.md` after installing dependencies.
+安装依赖后，请分别查看以下说明：
+
+- `backend/README.md`
+- `frontend/README.md`

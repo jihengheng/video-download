@@ -1,15 +1,15 @@
-# Frontend
+# 前端说明
 
-Vue 3 + Vite + TypeScript application for the public site and authenticated workspace.
+前端基于 Vue 3 + Vite + TypeScript，用于公开首页、解析页、任务工作台和结果展示页。
 
-## Local commands
+## 本地运行
 
 ```bash
 npm install
 npm run dev
 ```
 
-Run tests:
+## 运行测试
 
 ```bash
 npm run test

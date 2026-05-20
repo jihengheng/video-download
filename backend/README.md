@@ -1,17 +1,16 @@
-# Backend
+# 后端说明
 
-FastAPI service for authentication, video inspection, task orchestration, and result retrieval.
+后端基于 FastAPI，负责认证、视频解析、下载任务编排、结果读取与安全控制。
 
-## Main responsibilities
+## 主要职责
 
-- public URL inspection with `yt-dlp`
-- quota enforcement and audit logging
-- asynchronous task execution
-- transcript and summary persistence
-- subtitle and auto-caption extraction via `yt-dlp`
-- live summarization via DeepSeek chat API
+- 使用 `yt-dlp` 解析公开视频链接
+- 做额度控制、限流与审计记录
+- 执行下载、字幕提取与总结任务
+- 持久化任务、字幕、摘要和导出产物
+- 通过 DeepSeek Chat API 生成结构化总结
 
-## Local commands
+## 本地运行
 
 ```bash
 python3 -m venv .venv
@@ -20,24 +19,24 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-Run tests:
+## 运行测试
 
 ```bash
 pytest
 ```
 
-## Required runtime tools
+## 运行时依赖
 
-- `yt-dlp` is installed from `requirements.txt`
+- `yt-dlp`：已在 `requirements.txt` 中声明
 
-## Required environment variables for DeepSeek-only processing
+## DeepSeek 单模型模式所需环境变量
 
 - `OPENAI_API_KEY`
 - `OPENAI_BASE_URL`
 - `OPENAI_MODEL`
 - `SECRET_KEY`
 
-Recommended values:
+推荐配置：
 
 ```env
 OPENAI_BASE_URL=https://api.deepseek.com
@@ -45,10 +44,18 @@ OPENAI_MODEL=deepseek-chat
 SECRET_KEY=replace-with-a-long-random-secret
 ```
 
-Security notes:
+## 安全提醒
 
-- Do not put real API keys into `.env.example` or any tracked file.
-- Keep your real secrets only in local `.env` or your deployment secret manager.
-- If a real key was ever pasted into a tracked file or shared in logs/chat, rotate it immediately.
+- 不要把真实 API Key 写进 `.env.example` 或任何受版本控制的文件。
+- 真实密钥只应保存在本地 `.env` 或部署平台的密钥管理系统中。
+- 如果真实密钥曾出现在日志、聊天记录、截图或已提交文件中，应立即轮换。
 
-In this DeepSeek-only mode, summary generation requires the source video to expose subtitles or auto-captions. If no usable subtitles exist, task execution fails with a clear error instead of silently inventing a transcript.
+## 关于当前总结能力
+
+当前版本采用 DeepSeek 单模型模式。  
+这意味着总结能力依赖源视频本身是否提供字幕或自动字幕。
+
+- 有可用字幕：可以生成结构化总结
+- 没有可用字幕：只能下载，不能总结
+
+如果没有检测到可用字幕，任务会明确失败并给出可读错误提示，而不是伪造转写内容。
