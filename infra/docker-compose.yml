@@ -39,7 +39,7 @@ services:
     environment:
       POSTGRES_DB: video_research
       POSTGRES_USER: video_research
-      POSTGRES_PASSWORD: video_research
+      POSTGRES_PASSWORD: change-this-local-dev-password
     ports:
       - "5432:5432"
     volumes:

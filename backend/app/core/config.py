@@ -8,7 +8,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     app_name: str = Field(default="Video Research Studio", alias="APP_NAME")
     api_prefix: str = Field(default="/api", alias="API_PREFIX")
-    secret_key: str = Field(default="change-me", alias="SECRET_KEY")
+    secret_key: str = Field(default="replace-with-a-long-random-secret", alias="SECRET_KEY")
     access_token_expire_minutes: int = Field(default=1440, alias="ACCESS_TOKEN_EXPIRE_MINUTES")
     database_url: str = Field(default="sqlite:///./storage/dev.db", alias="DATABASE_URL")
     redis_url: str = Field(default="redis://localhost:6379/0", alias="REDIS_URL")

@@ -35,12 +35,20 @@ pytest
 - `OPENAI_API_KEY`
 - `OPENAI_BASE_URL`
 - `OPENAI_MODEL`
+- `SECRET_KEY`
 
 Recommended values:
 
 ```env
 OPENAI_BASE_URL=https://api.deepseek.com
 OPENAI_MODEL=deepseek-chat
+SECRET_KEY=replace-with-a-long-random-secret
 ```
+
+Security notes:
+
+- Do not put real API keys into `.env.example` or any tracked file.
+- Keep your real secrets only in local `.env` or your deployment secret manager.
+- If a real key was ever pasted into a tracked file or shared in logs/chat, rotate it immediately.
 
 In this DeepSeek-only mode, summary generation requires the source video to expose subtitles or auto-captions. If no usable subtitles exist, task execution fails with a clear error instead of silently inventing a transcript.
